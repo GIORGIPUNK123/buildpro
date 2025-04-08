@@ -7,9 +7,9 @@ import mobileImg from '../images/Mobile-Friendly.png';
 export const SecondSection = () => {
   return (
     <>
-      <div className='flex flex-col items-center py-56 bg-gradient-to-r from-accent/10 to-background'>
+      <section className='flex flex-col items-center py-26 lg:py-56 bg-gradient-to-r from-accent/10 to-background'>
         <h2 className='mb-24 text-5xl'>What We Offer</h2>
-        <div className='flex flex-wrap gap-24'>
+        <div className='flex flex-wrap justify-center gap-24'>
           <Card
             heading='Mobile-Friendly Websites'
             description='Ensure your website looks great on all devices. We design responsive websites that adapt to any screen size.'
@@ -26,7 +26,7 @@ export const SecondSection = () => {
             imageSrc={seoImg}
           />
         </div>
-      </div>
+      </section>
     </>
   );
 };
