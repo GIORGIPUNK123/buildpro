@@ -1,50 +1,100 @@
-export const Header = (props: { burgerClicked: boolean; onClick: any }) => {
+import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { useLanguage } from '../i18n/LanguageProvider';
+
+export const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { messages } = useLanguage();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = messages.header.nav;
+
   return (
-    <>
-      <div className='fixed w-full z-20 lg:static font-mono shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] items-center justify-between flex h-20 md:h-24 lg:h-32 bg-[#fcfcfc] px-16 md:px-32'>
-        <span className='text-4xl font-medium '>LOGO</span>
-        <div
-          onClick={props.onClick}
-          className='flex flex-col justify-between rounded-md cursor-pointer h-9 md:h-12 lg:hidden aspect-square'
-        >
-          {[0, 1, 2].map((_) => (
-            <div
-              className={` h-[9px] md:h-3 bg-black ${
-                _ == 0 ? 'rounded-t-sm' : _ == 1 ? '' : 'rounded-b-sm'
-              } `}
-            />
-          ))}
-        </div>
-        <nav className='hidden lg:flex'>
-          <ul className='flex gap-12 text-2xl '>
-            <li className='duration-200 border-b-4 cursor-pointer border-b-transparent hover:border-b-black'>
-              Home
-            </li>
-            <li className='duration-200 border-b-4 cursor-pointer border-b-transparent hover:border-b-black'>
-              Finished Projects
-            </li>
-            <li className='duration-200 border-b-4 cursor-pointer border-b-transparent hover:border-b-black'>
-              Contact Us
-            </li>
-          </ul>
-        </nav>
-        <nav
-          className={`fixed ${
-            !props.burgerClicked && 'hidden'
-          } right-0 z-20 w-full text-3xl bg-[#fcfcfc] py-16 top-20 md:top-24`}
-        >
-          <ul className='flex flex-col items-center gap-12'>
-            {['Home', 'Finished Projects', 'Contact Us'].map((_, __) => (
-              <li
-                onClick={props.onClick}
-                className='duration-200 border-b-4 cursor-pointer border-b-transparent hover:border-b-black'
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-lg py-4'
+          : 'bg-transparent py-6'
+      }`}
+    >
+      <div className='container mx-auto px-6 lg:px-12'>
+        <div className='flex items-center justify-between'>
+          {/* Logo */}
+          <a href='#home' className='group'>
+            <h1 className='text-2xl md:text-3xl font-bold bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300'>
+              {messages.header.brand}
+            </h1>
+          </a>
+
+          {/* Desktop Navigation */}
+          <nav className='hidden md:flex items-center space-x-6'>
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className='relative text-gray-700 hover:text-gray-900 font-medium transition-colors duration-300 group'
               >
-                {_}
-              </li>
+                {link.label}
+                <span className='absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300'></span>
+              </a>
             ))}
-          </ul>
-        </nav>
+            <a
+              href='#contact'
+              className='px-5 py-2.5 bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-full font-medium hover:shadow-lg hover:scale-105 transition-all duration-300'
+            >
+              {messages.header.cta}
+            </a>
+            <LanguageSwitcher />
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className='md:hidden p-2 text-gray-700 hover:text-gray-900 transition-colors'
+          >
+            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ${
+            mobileMenuOpen ? 'max-h-96 mt-6' : 'max-h-0'
+          }`}
+        >
+          <nav className='flex flex-col space-y-4 pb-6'>
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className='text-gray-700 hover:text-gray-900 font-medium py-2 border-b border-gray-200 hover:border-purple-600 transition-all duration-300'
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href='#contact'
+              onClick={() => setMobileMenuOpen(false)}
+              className='px-6 py-3 bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-full font-medium text-center hover:shadow-lg transition-all duration-300'
+            >
+              {messages.header.cta}
+            </a>
+            <div className='pt-2'>
+              <LanguageSwitcher />
+            </div>
+          </nav>
+        </div>
       </div>
-    </>
+    </header>
   );
 };
