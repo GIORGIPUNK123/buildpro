@@ -102,6 +102,8 @@ export type Messages = {
     responseValue: string;
     connectLabel: string;
     linkedin: string;
+    facebook: string;
+    instagram: string;
     emailCta: string;
     formTitle: string;
     fieldName: string;
@@ -115,6 +117,8 @@ export type Messages = {
     quickLinksTitle: string;
     contactTitle: string;
     linkedIn: string;
+    facebook: string;
+    instagram: string;
     madeWith: string;
     byline: string;
     quickLinks: FooterLink[];
@@ -387,20 +391,25 @@ export const messages: Record<Locale, Messages> = {
       responseValue: 'Within 24 hours',
       connectLabel: 'Connect With Us',
       linkedin: 'LinkedIn',
+      facebook: 'Facebook',
+      instagram: 'Instagram',
       emailCta: 'Email',
       formTitle: 'Send a Message',
       fieldName: 'Your Name',
       fieldEmail: 'Email Address',
       fieldMessage: 'Message',
       submitDisabled: 'Form Currently Disabled - Use Social Links',
-      disabledNote: 'Please use LinkedIn or Email above to get in touch',
+      disabledNote:
+        'Please use Facebook, Instagram, or Email above to get in touch',
     },
     footer: {
       description:
         'Creating exceptional web experiences that drive results and exceed expectations.',
       quickLinksTitle: 'Quick Links',
       contactTitle: 'Contact',
-      linkedIn: 'LinkedIn Profile',
+      linkedIn: 'LinkedIn',
+      facebook: 'Facebook',
+      instagram: 'Instagram',
       madeWith: 'Made with',
       byline: 'by BuildPro Team',
       quickLinks: [
@@ -674,20 +683,25 @@ export const messages: Record<Locale, Messages> = {
       responseValue: '24 საათის განმავლობაში',
       connectLabel: 'შემოგვიერთდით',
       linkedin: 'LinkedIn',
+      facebook: 'Facebook',
+      instagram: 'Instagram',
       emailCta: 'ელფოსტა',
       formTitle: 'გამოგვიგზავნე შეტყობინება',
       fieldName: 'თქვენი სახელი',
       fieldEmail: 'ელფოსტის მისამართი',
       fieldMessage: 'შეტყობინება',
       submitDisabled: 'ფორმა დროებით გამორთულია — გამოიყენეთ სოციალური ბმულები',
-      disabledNote: 'დაგვიკავშირდით LinkedIn-ით ან ელფოსტით ზემოთ',
+      disabledNote:
+        'დაგვიკავშირდით Facebook-ით, Instagram-ით ან ელფოსტით ზემოთ',
     },
     footer: {
       description:
         'შევქმენით განსაკუთრებული ვებ გამოცდილებები, რომლებიც შედეგს მოაქვს და მოლოდინს აჭარბებს.',
       quickLinksTitle: 'სწრაფი ბმულები',
       contactTitle: 'კონტაქტი',
-      linkedIn: 'LinkedIn პროფილი',
+      linkedIn: 'LinkedIn',
+      facebook: 'Facebook',
+      instagram: 'Instagram',
       madeWith: 'შექმნილია სითბოთი',
       byline: 'BuildPro გუნდისგან',
       quickLinks: [

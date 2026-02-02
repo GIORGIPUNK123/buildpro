@@ -59,6 +59,26 @@ export const Footer = () => {
                   {copy.linkedIn}
                 </a>
               </li>
+              <li>
+                <a
+                  href='https://www.facebook.com/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='hover:text-white transition-colors duration-300'
+                >
+                  {copy.facebook}
+                </a>
+              </li>
+              <li>
+                <a
+                  href='https://www.instagram.com/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='hover:text-white transition-colors duration-300'
+                >
+                  {copy.instagram}
+                </a>
+              </li>
             </ul>
           </div>
         </div>

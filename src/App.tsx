@@ -10,10 +10,12 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { Cta } from './components/Cta';
 import { Faq } from './components/Faq';
+import { Toaster } from './components/ui/sonner';
 
 export const App = () => {
   return (
     <div className='bg-white'>
+      <Toaster position='top-right' richColors />
       <Header />
       <Hero />
       <Services />

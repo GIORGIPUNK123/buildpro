@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Mail, Linkedin, Send, MapPin, Clock } from 'lucide-react';
+import { Mail, Send, MapPin, Clock, Facebook, Instagram } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageProvider';
-
+import emailjs from '@emailjs/browser';
+import { toast } from 'sonner';
 export const Contact = () => {
   const { messages } = useLanguage();
   const copy = messages.contact;
@@ -14,6 +15,28 @@ export const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    emailjs
+      .send(
+        'service_2mwg4gr',
+        'template_1ldcwb4',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          to_name: 'Build Pro',
+          message: formData.message,
+        },
+        {
+          publicKey: 'iBTo3uos_ljXLteKL',
+        },
+      )
+      .then(
+        () => {
+          toast.success('Message sent successfully!');
+        },
+        (error) => {
+          toast.error('Failed to send message. Please try again.');
+        },
+      );
     console.log('Form submitted:', formData);
     // Handle form submission
   };
@@ -99,15 +122,24 @@ export const Contact = () => {
                 <h4 className='font-semibold text-gray-900 mb-4'>
                   {copy.connectLabel}
                 </h4>
-                <div className='flex gap-4'>
+                <div className='flex flex-wrap gap-3'>
                   <a
-                    href='https://www.linkedin.com/in/giorgi-charashvili/'
+                    href='https://www.facebook.com/profile.php?id=61571835235757'
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='flex items-center gap-2 px-6 py-3 bg-linear-to-r from-blue-600 to-blue-700 text-white rounded-xl font-medium hover:shadow-lg hover:scale-105 transition-all duration-300'
+                    className='flex items-center gap-2 px-6 py-3 bg-linear-to-r from-blue-500 to-blue-600 text-white rounded-xl font-medium hover:shadow-lg hover:scale-105 transition-all duration-300'
                   >
-                    <Linkedin className='w-5 h-5' />
-                    {copy.linkedin}
+                    <Facebook className='w-5 h-5' />
+                    {copy.facebook}
+                  </a>
+                  <a
+                    href='https://www.instagram.com/buildpro.ge/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='flex items-center gap-2 px-6 py-3 bg-linear-to-r from-pink-500 to-purple-600 text-white rounded-xl font-medium hover:shadow-lg hover:scale-105 transition-all duration-300'
+                  >
+                    <Instagram className='w-5 h-5' />
+                    {copy.instagram}
                   </a>
                   <a
                     href={`mailto:${copy.emailValue}`}
@@ -187,16 +219,10 @@ export const Contact = () => {
 
               <button
                 type='submit'
-                disabled
-                className='w-full px-8 py-4 bg-gray-400 text-white rounded-xl font-semibold cursor-not-allowed flex items-center justify-center gap-2 opacity-60'
+                className=' cursor-pointer w-full px-8 py-4 bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold flex items-center justify-center gap-2 hover:shadow-lg hover:scale-105 transition-all duration-300'
               >
-                {copy.submitDisabled}
                 <Send className='w-5 h-5' />
               </button>
-
-              <p className='text-sm text-gray-500 text-center'>
-                {copy.disabledNote}
-              </p>
             </form>
           </div>
         </div>
