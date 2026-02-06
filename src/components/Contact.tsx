@@ -42,6 +42,7 @@ export const Contact = () => {
           toast.success('Message sent successfully!');
         },
         (error) => {
+          console.log('error:', error);
           toast.error('Failed to send message. Please try again.');
         },
       );
