@@ -27,6 +27,13 @@ type FaqItem = { question: string; answer: string };
 type CtaStat = { value: string; label: string };
 type TechStackCopy = { title: string; highlight: string; subtitle: string };
 type FooterLink = { label: string; href: string };
+type PricingPackage = {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: string[];
+};
 
 export type Messages = {
   header: { brand: string; nav: NavLink[]; cta: string };
@@ -89,6 +96,18 @@ export type Messages = {
     subtitle: string;
     items: FaqItem[];
   };
+  pricing: {
+    title: string;
+    highlight: string;
+    subtitle: string;
+    popularBadge: string;
+    freeDesign: string;
+    ctaButton: string;
+    customPrice: string;
+    guarantee: string;
+    guaranteeHighlight: string;
+    packages: PricingPackage[];
+  };
   contact: {
     title: string;
     highlight: string;
@@ -96,6 +115,8 @@ export type Messages = {
     getInTouch: string;
     emailLabel: string;
     emailValue: string;
+    phoneLabel: string;
+    phoneValue: string;
     locationLabel: string;
     locationValue: string;
     responseLabel: string;
@@ -133,6 +154,7 @@ export const messages: Record<Locale, Messages> = {
         { label: 'Home', href: '#home' },
         { label: 'Services', href: '#services' },
         { label: 'Projects', href: '#projects' },
+        { label: 'Pricing', href: '#pricing' },
         { label: 'Contact', href: '#contact' },
       ],
       cta: 'Get Started',
@@ -274,6 +296,12 @@ export const messages: Record<Locale, Messages> = {
         "Explore our latest work and see how we've helped businesses succeed online.",
       items: [
         {
+          title: 'British World',
+          description:
+            'Online English learning platform connecting 10K+ students with expert teachers through live 1-on-1 and group video lessons.',
+          tags: ['React', 'TypeScript', 'Tailwind CSS'],
+        },
+        {
           title: 'Portfolio Website',
           description:
             'An interactive portfolio featuring a unique terminal interface, showcasing projects and professional information.',
@@ -283,7 +311,7 @@ export const messages: Record<Locale, Messages> = {
           title: 'Landing Page',
           description:
             'Modern landing page design showcasing advanced CSS animations and responsive design principles.',
-          tags: ['HTML', 'CSS', 'JavaScript'],
+          tags: ['React', 'Tailwind CSS'],
         },
         {
           title: 'Coming Soon',
@@ -377,6 +405,68 @@ export const messages: Record<Locale, Messages> = {
         },
       ],
     },
+    pricing: {
+      title: 'Simple & Transparent',
+      highlight: 'Pricing',
+      subtitle:
+        'Choose the perfect package for your needs. All packages include free design consultation!',
+      popularBadge: 'Most Popular',
+      freeDesign: '+ Free Design',
+      ctaButton: 'Get Started',
+      customPrice: 'Other',
+      guarantee: 'All packages come with',
+      guaranteeHighlight: '30-day money-back guarantee',
+      packages: [
+        {
+          name: 'Starter',
+          price: '₾600',
+          period: 'one-time',
+          description: 'Perfect for small businesses and personal brands',
+          features: [
+            'Up to 5 pages',
+            'Responsive design',
+            'Basic SEO optimization',
+            'Contact form integration',
+            'Social media links',
+            '1 month free support',
+            'Mobile-friendly design',
+          ],
+        },
+        {
+          name: 'Professional',
+          price: '₾1200',
+          period: 'one-time',
+          description: 'Ideal for growing businesses with advanced needs',
+          features: [
+            'Up to 10 pages',
+            'Custom design & animations',
+            'Advanced SEO & analytics',
+            'Blog/CMS integration',
+            'E-commerce ready (up to 20 products)',
+            '1 months free support',
+            'Fast loading optimization',
+            'Security features',
+          ],
+        },
+        {
+          name: 'Enterprise',
+          price: 'Other',
+          period: '',
+          description: 'Tailored solutions for large-scale projects',
+          features: [
+            'Unlimited pages',
+            'Premium custom design',
+            'Full SEO strategy',
+            'Advanced integrations',
+            'E-commerce (unlimited products)',
+            '1 months priority support',
+            'Performance optimization',
+            'Dedicated project manager',
+            'Custom features & functionality',
+          ],
+        },
+      ],
+    },
     contact: {
       title: "Let's",
       highlight: 'Work Together',
@@ -385,6 +475,8 @@ export const messages: Record<Locale, Messages> = {
       getInTouch: 'Get In Touch',
       emailLabel: 'Email',
       emailValue: 'giorgirock@hotmail.com',
+      phoneLabel: 'Phone',
+      phoneValue: '+995 598 565 365',
       locationLabel: 'Location',
       locationValue: 'Working Remotely',
       responseLabel: 'Response Time',
@@ -416,6 +508,7 @@ export const messages: Record<Locale, Messages> = {
         { label: 'Home', href: '#home' },
         { label: 'Services', href: '#services' },
         { label: 'Projects', href: '#projects' },
+        { label: 'Pricing', href: '#pricing' },
         { label: 'Contact', href: '#contact' },
       ],
     },
@@ -427,16 +520,17 @@ export const messages: Record<Locale, Messages> = {
         { label: 'მთავარი', href: '#home' },
         { label: 'სერვისები', href: '#services' },
         { label: 'პროექტები', href: '#projects' },
+        { label: 'ფასები', href: '#pricing' },
         { label: 'კონტაქტი', href: '#contact' },
       ],
       cta: 'დაიწყე',
     },
     hero: {
       badge: 'პროფესიონალური ვებ გადაწყვეტები',
-      titleLine1: 'შექმენი საოცარი',
-      titleLine2: 'ვებსაიტები, რომლებიც გარდაქმნის',
+      titleLine1: 'შენი ვებსაიტი',
+      titleLine2: 'შენი წარმატებაა',
       description:
-        'ვქმნით ლამაზ, მაღალპერფორმანსიან ვებსაიტებს, რომლებიც აძლიერებს ბრენდს და ზრდის შედეგებს.',
+        'ვქმინთ პროფესიონალურ, თანამედროვე და მოთხოვნად ვებსაიტებს, სწრაფად და ხელმისაწვდომ ფასად.',
       primaryCta: 'დაიწყე პროექტი',
       secondaryCta: 'ნახე ჩვენი ნამუშევრები',
       stats: [
@@ -492,7 +586,7 @@ export const messages: Record<Locale, Messages> = {
         {
           title: 'ექსპერტების გუნდი',
           description:
-            'ჩვენ უბრალოდ მორიგი ვებ-გვერდების დამუშავების სააგენტო არ ვართ. აი, რა განგვასხვავებს ჩვენ.',
+            'საუკეთესო დეველოპერები რომლებიც მზად არიან შექმნან თქვენთვის იდეალური ვებსაიტი.',
         },
         {
           title: 'შედეგზე ორიენტირებული',
@@ -520,7 +614,7 @@ export const messages: Record<Locale, Messages> = {
             'თქვენი კმაყოფილება ჩვენი პრიორიტეტია. ჩვენ მჭიდროდ ვთანამშრომლობთ თქვენთან, რათა დავრწმუნდეთ, რომ თქვენი ხედვა ხორციელდება.',
         },
       ],
-      ctaPrompt: 'მზად ხართ სხვაობის გამოცდილებისთვის?',
+      ctaPrompt: 'შეგვიკვე ახლავე',
       ctaLabel: 'დავიწყოთ',
     },
     process: {
@@ -532,7 +626,7 @@ export const messages: Record<Locale, Messages> = {
         {
           title: 'აღმოჩენა',
           description:
-            'ჩვენ ვიწყებთ თქვენი ბიზნეს მიზნების, სამიზნე აუდიტორიისა და პროექტის მოთხოვნების გაგებით დეტალური კონსულტაციის გზით.',
+            'ჩვენ ვიწყებთ თქვენი ბიზნეს მიზნების, სამიზნე აუდიტორიისა და პროექტის მოთხოვნების ანალიზით.',
           number: '01',
         },
         {
@@ -567,6 +661,12 @@ export const messages: Record<Locale, Messages> = {
         'გაეცანით ჩვენს უახლეს ნამუშევრებს და ნახეთ, როგორ დავეხმარეთ ბიზნესებს წარმატებაში.',
       items: [
         {
+          title: 'British World',
+          description:
+            'ონლაინ ინგლისური ენის სწავლების პლატფორმა, რომელიც 10,000+ სტუდენტს აკავშირებს ექსპერტ მასწავლებლებთან პირდაპირი 1-დან 1-მდე და ჯგუფური ვიდეო გაკვეთილების საშუალებით.',
+          tags: ['React', 'TypeScript', 'Tailwind CSS'],
+        },
+        {
           title: 'პორტფოლიოს ვებსაიტი',
           description:
             'ინტერაქტიული პორტფოლიო უნიკალური ტერმინალის ინტერფეისით, სადაც წარდგენილია პროექტები და ინფორმაცია.',
@@ -595,7 +695,7 @@ export const messages: Record<Locale, Messages> = {
         'არ დაკმაყოფილდეთ მხოლოდ ჩვენს სიტყვებით — მოისმინეთ კმაყოფილი კლიენტებისგან.',
       items: [
         {
-          name: 'Sarah Johnson',
+          name: 'ლიზი დათუნაშვილი',
           role: 'CEO, TechStart Inc',
           content:
             'BuildPro-სთან მუშაობა სრული სიამოვნება იყო. მათ შექმნეს საოცარი საიტი, რომელმაც გადააჭარბა მოლოდინს და კონვერსიები 150%-ით გაზარდა.',
@@ -609,7 +709,7 @@ export const messages: Record<Locale, Messages> = {
           rating: 5,
         },
         {
-          name: 'Emily Rodriguez',
+          name: 'მარიამ გორგაძე',
           role: 'Marketing Director, GrowthCo',
           content:
             'არამხოლოდ მშვენიერი საიტი ააგეს, არამედ შესანიშნავი მხარდაჭერა და რჩევებიც მოგვაწოდეს პროცესის განმავლობაში. ძალიან გირჩევთ!',
@@ -619,10 +719,10 @@ export const messages: Record<Locale, Messages> = {
     },
     cta: {
       badge: 'მზად ხარ დასაწყებად?',
-      headingLine1: 'ავაშენოთ ერთად',
-      headingLine2: 'რაღაც საოცარი',
+      headingLine1: 'მიიღე წარმატება',
+      headingLine2: 'ჩვენი დახმარებით',
       description:
-        'გადაიყვანე შენი იდეა რეალობაში შთამბეჭდავი საიტით, რომელიც შედეგებს მოაქვს. მოგვწერე დღესვე უფასო კონსულტაციისთვის.',
+        'გადაიყვანე შენი იდეა რეალობაში შთამბეჭდავი საიტით, რომელიც საუკეთესო შედეგს მოგიტანს. მოგვწერე დღესვე უფასო კონსულტაციისთვის.',
       primaryCta: 'დაიწყე პროექტი',
       secondaryCta: 'ნახე ნამუშევრები',
       stats: [
@@ -670,6 +770,68 @@ export const messages: Record<Locale, Messages> = {
         },
       ],
     },
+    pricing: {
+      title: 'მარტივი და გამჭვირვალე',
+      highlight: 'ფასები',
+      subtitle:
+        'აირჩიეთ თქვენთვის შესაფერისი პაკეტი. ყველა პაკეტი მოიცავს უფასო დიზაინ კონსულტაციას!',
+      popularBadge: 'ყველაზე პოპულარული',
+      freeDesign: '+ უფასო დიზაინი',
+      ctaButton: 'დაიწყე',
+      customPrice: 'სხვა',
+      guarantee: 'ყველა პაკეტი მოიცავს',
+      guaranteeHighlight: '30-დღიანი გარანტიას',
+      packages: [
+        {
+          name: 'საწყისი',
+          price: '₾600',
+          period: 'ერთჯერადი',
+          description: 'სრულყოფილი მცირე ბიზნესისა და პირადი ბრენდისთვის',
+          features: [
+            'მაქსიმუმ 5 გვერდი',
+            'რესპონსიული დიზაინი',
+            'ძირითადი SEO ოპტიმიზაცია',
+            'საკონტაქტო ფორმა',
+            'სოციალური მედიის ბმულები',
+            '1 თვე უფასო მხარდაჭერა',
+            'მობილურზე მორგებული დიზაინი',
+          ],
+        },
+        {
+          name: 'პროფესიონალური',
+          price: '₾1200',
+          period: 'ერთჯერადი',
+          description: 'იდეალური მზარდი ბიზნესისთვის გაფართოებული საჭიროებებით',
+          features: [
+            'მაქსიმუმ 10 გვერდი',
+            'მორგებული დიზაინი & ანიმაციები',
+            'გაფართოებული SEO & ანალიტიკა',
+            'ბლოგი/CMS ინტეგრაცია',
+            'ელ-კომერცია (20 პროდუქტამდე)',
+            '1 თვე უფასო მხარდაჭერა',
+            'სწრაფი ჩატვირთვის ოპტიმიზაცია',
+            'უსაფრთხოების ფუნქციები',
+          ],
+        },
+        {
+          name: 'ენთერპრაიზი',
+          price: 'სხვა',
+          period: '',
+          description: 'მორგებული გადაწყვეტები მასშტაბური პროექტებისთვის',
+          features: [
+            'შეუზღუდავი გვერდები',
+            'პრემიუმ მორგებული დიზაინი',
+            'სრული SEO სტრატეგია',
+            'გაფართოებული ინტეგრაციები',
+            'ელ-კომერცია (შეუზღუდავი პროდუქტები)',
+            '1 თვე პრიორიტეტული მხარდაჭერა',
+            'პროდუქტიულობის ოპტიმიზაცია',
+            'პერსონალური პროექტის მენეჯერი',
+            'მორგებული ფუნქციები და ფუნქციონალობა',
+          ],
+        },
+      ],
+    },
     contact: {
       title: 'მოდით',
       highlight: 'ვიმუშაოთ ერთად',
@@ -677,6 +839,8 @@ export const messages: Record<Locale, Messages> = {
       getInTouch: 'დაგვიკავშირდით',
       emailLabel: 'იმეილი',
       emailValue: 'giorgirock@hotmail.com',
+      phoneLabel: 'ტელეფონი',
+      phoneValue: '+995 598 565 365',
       locationLabel: 'ადგილმდებარეობა',
       locationValue: 'დისტანციურად',
       responseLabel: 'პასუხის დრო',
@@ -696,7 +860,7 @@ export const messages: Record<Locale, Messages> = {
     },
     footer: {
       description:
-        'შევქმენით განსაკუთრებული ვებ გამოცდილებები, რომლებიც შედეგს მოაქვს და მოლოდინს აჭარბებს.',
+        'გადაიყვანე შენი იდეა რეალობაში შთამბეჭდავი საიტით, რომელიც საუკეთესო შედეგს მოგიტანს.',
       quickLinksTitle: 'სწრაფი ბმულები',
       contactTitle: 'კონტაქტი',
       linkedIn: 'LinkedIn',
@@ -708,6 +872,7 @@ export const messages: Record<Locale, Messages> = {
         { label: 'მთავარი', href: '#home' },
         { label: 'სერვისები', href: '#services' },
         { label: 'პროექტები', href: '#projects' },
+        { label: 'ფასები', href: '#pricing' },
         { label: 'კონტაქტი', href: '#contact' },
       ],
     },

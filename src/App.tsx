@@ -6,6 +6,7 @@ import { Process } from './components/Process';
 import { TechStack } from './components/TechStack';
 import { Projects } from './components/Projects';
 import { Testimonials } from './components/Testimonials';
+import { Pricing } from './components/Pricing';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { Cta } from './components/Cta';
@@ -24,6 +25,7 @@ export const App = () => {
       <TechStack />
       <Projects />
       <Testimonials />
+      <Pricing />
       <Faq />
       <Cta />
       <Contact />

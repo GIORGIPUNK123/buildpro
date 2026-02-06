@@ -1,14 +1,19 @@
 import { ExternalLink, Github } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageProvider';
-
+import britishworld from '../images/british-world.png';
+import portfolioImg from '../images/portfolio.png';
 export const Projects = () => {
   const { messages } = useLanguage();
   const copy = messages.projects;
 
   const projects = [
     {
-      image:
-        'https://images.unsplash.com/photo-1708939582011-ddbd2ff61b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwb3J0Zm9saW8lMjB3ZWJzaXRlJTIwc2NyZWVuc2hvdHxlbnwxfHx8fDE3NjkyNzkyNzd8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      image: britishworld,
+      link: 'https://english-pied-kappa.vercel.app/',
+      gradient: 'from-purple-600 to-pink-600',
+    },
+    {
+      image: portfolioImg,
       link: 'https://www.giorgiportfolio.vercel.app/',
       github: 'https://github.com/GIORGIPUNK123/Portfolio',
       gradient: 'from-blue-600 to-cyan-600',
@@ -54,16 +59,22 @@ export const Projects = () => {
                 className='group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2'
               >
                 {/* Image */}
-                <div className='relative h-64 overflow-hidden'>
-                  <img
-                    src={project.image}
-                    alt={translated.title}
-                    className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
-                  />
-                  <div
-                    className={`absolute inset-0 bg-linear-to-br ${project.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
-                  ></div>
-                </div>
+                <a
+                  href={project.link}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <div className='relative h-64 overflow-hidden'>
+                    <img
+                      src={project.image}
+                      alt={translated.title}
+                      className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500'
+                    />
+                    <div
+                      className={`absolute inset-0 bg-linear-to-br ${project.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+                    ></div>
+                  </div>
+                </a>
 
                 {/* Content */}
                 <div className='p-6'>

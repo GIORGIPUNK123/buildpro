@@ -1,5 +1,13 @@
 import { useState } from 'react';
-import { Mail, Send, MapPin, Clock, Facebook, Instagram } from 'lucide-react';
+import {
+  Mail,
+  Send,
+  MapPin,
+  Clock,
+  Phone,
+  Facebook,
+  Instagram,
+} from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageProvider';
 import emailjs from '@emailjs/browser';
 import { toast } from 'sonner';
@@ -88,6 +96,23 @@ export const Contact = () => {
                       className='text-gray-600 hover:text-blue-600 transition-colors'
                     >
                       {copy.emailValue}
+                    </a>
+                  </div>
+                </div>
+
+                <div className='flex items-start gap-4'>
+                  <div className='w-12 h-12 rounded-xl bg-linear-to-br from-orange-500 to-red-500 flex items-center justify-center shrink-0'>
+                    <Phone className='w-6 h-6 text-white' />
+                  </div>
+                  <div>
+                    <h4 className='font-semibold text-gray-900 mb-1'>
+                      {copy.phoneLabel}
+                    </h4>
+                    <a
+                      href={`tel:${copy.phoneValue}`}
+                      className='text-gray-600 hover:text-blue-600 transition-colors'
+                    >
+                      {copy.phoneValue}
                     </a>
                   </div>
                 </div>

@@ -51,16 +51,6 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href='https://www.linkedin.com/in/giorgi-charashvili/'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='hover:text-white transition-colors duration-300'
-                >
-                  {copy.linkedIn}
-                </a>
-              </li>
-              <li>
-                <a
                   href='https://www.facebook.com/'
                   target='_blank'
                   rel='noopener noreferrer'
