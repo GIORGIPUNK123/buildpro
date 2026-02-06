@@ -25,7 +25,7 @@ export const Contact = () => {
     e.preventDefault();
     emailjs
       .send(
-        'service_2mwg4gr',
+        'service_ckr6lj1',
         'template_1ldcwb4',
         {
           from_name: formData.name,
