@@ -12,15 +12,28 @@ import { Footer } from './components/Footer';
 import { Cta } from './components/Cta';
 import { Faq } from './components/Faq';
 import { Toaster } from './components/ui/sonner';
+import { SEO } from './components/SEO';
+import {
+  StructuredData,
+  organizationSchema,
+} from './components/StructuredData';
 import ReactGA from 'react-ga4';
 import { useEffect } from 'react';
+
 export const App = () => {
   useEffect(() => {
     ReactGA.initialize('G-BP7TBYZ2TJ');
     ReactGA.send({ hitType: 'pageview', page: window.location.pathname });
   }, []);
+
   return (
     <div className='bg-white'>
+      <SEO
+        title='BuildPro - Web Development & Software Solutions'
+        description='Premium web development and software solutions for your business. Expert team ready to build your digital future.'
+      />
+      <StructuredData type='Organization' data={organizationSchema} />
+
       <Toaster position='top-right' richColors />
       <Header />
       <Hero />
