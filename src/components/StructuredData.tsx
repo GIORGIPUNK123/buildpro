@@ -33,9 +33,9 @@ export const StructuredData = ({ type, data }: StructuredDataProps) => {
 export const organizationSchema = {
   '@type': 'Organization',
   name: 'BuildPro',
-  url: SEO_CONFIG.siteUrl,
-  logo: `${SEO_CONFIG.siteUrl}/logo.png`,
-  description: SEO_CONFIG.description,
+  url: SEO_CONFIG.en.siteUrl,
+  logo: `${SEO_CONFIG.en.siteUrl}/logo.png`,
+  description: SEO_CONFIG.en.description,
   sameAs: [
     'https://www.linkedin.com/company/buildpro', // Update with your URLs
     'https://twitter.com/buildpro',
@@ -53,8 +53,8 @@ export const organizationSchema = {
 export const localBusinessSchema = {
   '@type': 'LocalBusiness',
   name: 'BuildPro',
-  image: `${SEO_CONFIG.siteUrl}/logo.png`,
-  description: SEO_CONFIG.description,
+  image: `${SEO_CONFIG.en.siteUrl}/logo.png`,
+  description: SEO_CONFIG.en.description,
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Your Street Address',
@@ -71,7 +71,7 @@ export const localBusinessSchema = {
 export const getBreadcrumbSchema = (
   items: Array<{ name: string; url: string }>,
 ) => {
-  const breadcrumbs = [{ name: 'Home', url: SEO_CONFIG.siteUrl }, ...items];
+  const breadcrumbs = [{ name: 'Home', url: SEO_CONFIG.en.siteUrl }, ...items];
 
   return {
     '@type': 'BreadcrumbList',

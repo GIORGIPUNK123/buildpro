@@ -32,7 +32,7 @@ export const generateSitemap = (routes: SitemapEntry[]): string => {
     .map((route) => {
       return `
   <url>
-    <loc>${SEO_CONFIG.siteUrl}${route.url}</loc>
+    <loc>${SEO_CONFIG.en.siteUrl}${route.url}</loc>
     ${route.lastmod ? `<lastmod>${route.lastmod}</lastmod>` : ''}
     ${route.changefreq ? `<changefreq>${route.changefreq}</changefreq>` : ''}
     ${route.priority ? `<priority>${route.priority}</priority>` : '<priority>0.8</priority>'}
