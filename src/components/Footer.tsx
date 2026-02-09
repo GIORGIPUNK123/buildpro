@@ -51,7 +51,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href='https://www.facebook.com/'
+                  href='https://www.facebook.com/profile.php?id=61587454905585'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='hover:text-white transition-colors duration-300'

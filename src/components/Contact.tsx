@@ -150,7 +150,7 @@ export const Contact = () => {
                 </h4>
                 <div className='flex flex-wrap gap-3'>
                   <a
-                    href='https://www.facebook.com/profile.php?id=61571835235757'
+                    href='https://www.facebook.com/profile.php?id=61587454905585'
                     target='_blank'
                     rel='noopener noreferrer'
                     className='flex items-center gap-2 px-6 py-3 bg-linear-to-r from-blue-500 to-blue-600 text-white rounded-xl font-medium hover:shadow-lg hover:scale-105 transition-all duration-300'
