@@ -1,45 +1,84 @@
 export const SEO_CONFIG = {
-  siteName: 'BuildPro',
-  siteUrl: 'https://buildprogeorgia.com', // Change this to your domain
-  description:
-    'Premium web development and software solutions for your business',
-  keywords: [
-    'web development',
-    'software development',
-    'digital solutions',
-    'custom software',
-  ],
-  locale: 'en_US',
-  twitterHandle: '@buildpro', // Change this to your Twitter handle
-  socialImage: '/logo.png', // Add an OG image to public folder
-};
-
-export const ROUTES_SEO: Record<
-  string,
-  { title: string; description: string; keywords?: string[] }
-> = {
-  '/': {
+  en: {
+    siteName: 'BuildPro',
+    siteUrl: 'https://buildprogeorgia.com',
     title: 'BuildPro - Web Development & Software Solutions',
     description:
       'Premium web development and software solutions for your business. Expert team ready to build your digital future.',
-    keywords: ['web development', 'software development', 'digital solutions'],
+    keywords: [
+      'web development',
+      'software development',
+      'digital solutions',
+      'custom software',
+      'web design',
+      'mobile apps',
+    ],
+    locale: 'en_US',
+    twitterHandle: '@buildpro',
+    socialImage: '/logo.png',
   },
-  '/services': {
-    title: 'Our Services - BuildPro',
+  ka: {
+    siteName: 'BuildPro',
+    siteUrl: 'https://buildprogeorgia.com',
+    title: 'BuildPro - ვებ დეველოპმენტი და პროგრამული გადაწყვეტილებები',
     description:
-      'Explore our comprehensive web development and software services',
+      'პრემიუმ ვებ დეველოპმენტი და პროგრამული გადაწყვეტილებები თქვენი ბიზნესისთვის. ექსპერტთა გუნდი მზადაა ააშენოს თქვენი ციფრული მომავალი.',
+    keywords: [
+      'ვებსაიტის დამზადება',
+      'ვებსაიტის შექმნა',
+      'ვებსაიტის გაკეთება',
+      'ვებგვერდის დამზადება',
+      'ვებგვერდის შექმნა',
+      'ვებგვერდის გაკეთება',
+      'ვებ დეველოპმენტი',
+      'პროგრამული უზრუნველყოფა',
+      'ციფრული გადაწყვეტილებები',
+      'მორგებული პროგრამული უზრუნველყოფა',
+      'ვებ დიზაინი',
+      'მობილური აპლიკაციები',
+    ],
+    locale: 'ka_GE',
+    twitterHandle: '@buildpro',
+    socialImage: '/logo.png',
   },
-  '/projects': {
-    title: 'Portfolio - BuildPro',
-    description: 'View our successful projects and case studies',
+};
+
+// Section metadata for structured data and dynamic updates (optional)
+export const SECTIONS_META = {
+  en: {
+    services: {
+      heading: 'Our Services',
+      description: 'Comprehensive web development and software services',
+    },
+    projects: {
+      heading: 'Our Projects',
+      description: 'Successful projects and case studies',
+    },
+    pricing: {
+      heading: 'Pricing Plans',
+      description: 'Flexible pricing plans for all business sizes',
+    },
+    contact: {
+      heading: 'Contact Us',
+      description: 'Get in touch with our team',
+    },
   },
-  '/pricing': {
-    title: 'Pricing Plans - BuildPro',
-    description: 'Flexible pricing plans for all business sizes',
-  },
-  '/contact': {
-    title: 'Contact Us - BuildPro',
-    description:
-      'Get in touch with our team. We are ready to help you build your next project',
+  ka: {
+    services: {
+      heading: 'ჩვენი სერვისები',
+      description: 'ყოვლისმომცველი ვებ დეველოპმენტი და პროგრამული სერვისები',
+    },
+    projects: {
+      heading: 'ჩვენი პროექტები',
+      description: 'წარმატებული პროექტები და შემთხვევის შესწავლა',
+    },
+    pricing: {
+      heading: 'საფასო გეგმები',
+      description: 'მოქნილი საფასო გეგმები ყველა ზომის ბიზნესისთვის',
+    },
+    contact: {
+      heading: 'დაგვიკავშირდით',
+      description: 'დაუკავშირდით ჩვენს გუნდს',
+    },
   },
 };

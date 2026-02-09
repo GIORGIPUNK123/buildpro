@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { ReactNode } from 'react';
 import { SEO_CONFIG } from '../config/seo';
+import { useLanguage } from '../i18n/LanguageProvider';
 
 interface SEOProps {
   title?: string;
@@ -13,47 +14,58 @@ interface SEOProps {
 }
 
 export const SEO = ({
-  title = SEO_CONFIG.siteName,
-  description = SEO_CONFIG.description,
-  keywords = SEO_CONFIG.keywords,
-  image = `${SEO_CONFIG.siteUrl}/og-image.png`,
-  url = SEO_CONFIG.siteUrl,
+  title,
+  description,
+  keywords,
+  image,
+  url,
   type = 'website',
 }: SEOProps) => {
-  const fullTitle = title.includes('BuildPro') ? title : `${title} | BuildPro`;
+  const { locale } = useLanguage();
+  const config = SEO_CONFIG[locale];
+
+  const seoTitle = title || config.title;
+  const seoDescription = description || config.description;
+  const seoKeywords = keywords || config.keywords;
+  const seoImage = image || `${config.siteUrl}/og-image.png`;
+  const seoUrl = url || config.siteUrl;
+
+  const fullTitle = seoTitle.includes('BuildPro')
+    ? seoTitle
+    : `${seoTitle} | BuildPro`;
 
   return (
     <Helmet>
       {/* Basic Meta Tags */}
-      <html lang='en' />
+      <html lang={locale} />
       <title>{fullTitle}</title>
-      <meta name='description' content={description} />
-      {keywords.length > 0 && (
-        <meta name='keywords' content={keywords.join(', ')} />
+      <meta name='description' content={seoDescription} />
+      {seoKeywords.length > 0 && (
+        <meta name='keywords' content={seoKeywords.join(', ')} />
       )}
       <meta name='author' content='BuildPro' />
       <meta name='robots' content='index, follow' />
       <meta name='googlebot' content='index, follow' />
 
       {/* Canonical URL */}
-      <link rel='canonical' href={url} />
+      <link rel='canonical' href={seoUrl} />
 
       {/* Open Graph Tags */}
       <meta property='og:type' content={type} />
       <meta property='og:title' content={fullTitle} />
-      <meta property='og:description' content={description} />
-      <meta property='og:url' content={url} />
-      <meta property='og:image' content={image} />
-      <meta property='og:site_name' content={SEO_CONFIG.siteName} />
-      <meta property='og:locale' content={SEO_CONFIG.locale} />
+      <meta property='og:description' content={seoDescription} />
+      <meta property='og:url' content={seoUrl} />
+      <meta property='og:image' content={seoImage} />
+      <meta property='og:site_name' content={config.siteName} />
+      <meta property='og:locale' content={config.locale} />
 
       {/* Twitter Card Tags */}
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='twitter:title' content={fullTitle} />
-      <meta name='twitter:description' content={description} />
-      <meta name='twitter:image' content={image} />
-      {SEO_CONFIG.twitterHandle && (
-        <meta name='twitter:creator' content={SEO_CONFIG.twitterHandle} />
+      <meta name='twitter:description' content={seoDescription} />
+      <meta name='twitter:image' content={seoImage} />
+      {config.twitterHandle && (
+        <meta name='twitter:creator' content={config.twitterHandle} />
       )}
 
       {/* Additional SEO Tags */}
