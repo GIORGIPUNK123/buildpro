@@ -23,31 +23,36 @@ export const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      toast.error('Contact form is not configured.');
+      return;
+    }
+
     emailjs
       .send(
-        'service_ckr6lj1',
-        'template_1ldcwb4',
+        serviceId,
+        templateId,
         {
           from_name: formData.name,
           from_email: formData.email,
           to_name: 'Build Pro',
           message: formData.message,
         },
-        {
-          publicKey: 'iBTo3uos_ljXLteKL',
-        },
+        { publicKey },
       )
       .then(
         () => {
           toast.success('Message sent successfully!');
         },
-        (error) => {
-          console.log('error:', error);
+        () => {
           toast.error('Failed to send message. Please try again.');
         },
       );
-    console.log('Form submitted:', formData);
-    // Handle form submission
   };
 
   const handleChange = (

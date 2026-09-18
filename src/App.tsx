@@ -22,7 +22,9 @@ import { useEffect } from 'react';
 
 export const App = () => {
   useEffect(() => {
-    ReactGA.initialize('G-BP7TBYZ2TJ');
+    const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+    if (!measurementId) return;
+    ReactGA.initialize(measurementId);
     ReactGA.send({ hitType: 'pageview', page: window.location.pathname });
   }, []);
 
